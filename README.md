@@ -1,4 +1,0 @@
-# Hangman
-
-
-My first project
