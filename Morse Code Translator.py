@@ -51,6 +51,7 @@ def morse_code_info(letter):
         return 'Z'
 
 
+print('Format:\n" " (space) between letters\n(space)" "|" "(space) between words\nEnter Morse Code:\n')
 morse_code = input()
 
 words = morse_code.split(' | ')
@@ -87,5 +88,5 @@ def get_translated_word(word, code):
 for word in code:
     get_translated_word(word, code)
 
-
+print()
 print(' '.join(translated_code))
