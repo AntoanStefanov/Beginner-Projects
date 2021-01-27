@@ -39,14 +39,14 @@ def update_contact(contact_to_update):
         else:
             print('No such information for the contact.')
     else:
-        print("No such contact in contact book.")
+        print("No such contact in Contact book.")
 
 
 def delete_contact(contact_to_delete):
     if contact_to_delete in contacts.keys():
         del contacts[contact_to_delete]
     else:
-        print("No such contact in contact book.")
+        print("No such contact in Contact Book.")
 
 
 print('Contact Book')
@@ -75,10 +75,13 @@ def main():
             delete_contact(contact_to_delete)
 
         elif option == 'list contacts':
-            for contact, info in sorted(contacts.items()):
-                print(
-                    f"Name: {contact}, Address: {info[0]}, Phone Number: {info[1]}, Email: {info[2]}")
-                print()
+            if contacts:
+                for contact, info in sorted(contacts.items()):
+                    print(
+                        f"Name: {contact}, Address: {info[0]}, Phone Number: {info[1]}, Email: {info[2]}")
+                    print()
+            else:
+                print("Empty Contact Book")
         else:
             print("No such option")
 
