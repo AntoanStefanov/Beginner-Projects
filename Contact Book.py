@@ -1,3 +1,7 @@
+# This is a command-line project  that users can use to save and find contact details.
+# The application also allow users to update contact information, delete contacts
+# and list saved contacts.Created with functions.
+
 contacts = {}
 
 
@@ -76,6 +80,7 @@ def main():
 
         elif option == 'list contacts':
             if contacts:
+                print("Contacts information:\n")
                 for contact, info in sorted(contacts.items()):
                     print(
                         f"Name: {contact}, Address: {info[0]}, Phone Number: {info[1]}, Email: {info[2]}")
