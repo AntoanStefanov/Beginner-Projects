@@ -1,15 +1,20 @@
 contacts = {}
 
 
-def get_info(name):
+def get_info():
+    name = input("Contact Name: ")
     address = input("Contact Address: ")
     phone_number = input("Contact Phone Number: ")
     email = input("Contact Email: ")
-    return address, phone_number, email
+    return name, address, phone_number, email
 
 
 def add_contact(name, address, phone_number, email):
-    contacts[name] = [address, phone_number, email]
+    if name not in contacts.keys():
+
+        contacts[name] = [address, phone_number, email]
+    else:
+        print("That contact exists.")
 
 
 def update_contact(contact_to_update):
@@ -45,40 +50,37 @@ def delete_contact(contact_to_delete):
 
 
 print('Contact Book')
-print('Options: Add Contact, Update Contact, Delete Contact, List Contacts')
+print('Options: Add Contact, Update Contact, Delete Contact, List Contacts, Exit')
 
 
 def main():
+    while True:
 
-    option = input("Your Option: ")
+        option = input("Your Option: ").lower()
 
-    if option.lower() == 'add contact':
-        name = input("Contact Name: ")
-        if name not in contacts.keys():
-            address, phone_number, email = get_info(name)
+        if option == 'exit':
+            print("See ya soon!")
+            break
+
+        elif option == 'add contact':
+            name, address, phone_number, email = get_info()
             add_contact(name, address, phone_number, email)
+
+        elif option == 'update contact':
+            contact_to_update = input('Which contact to update? ')
+            update_contact(contact_to_update)
+
+        elif option == 'delete contact':
+            contact_to_delete = input('Which contact to delete? ')
+            delete_contact(contact_to_delete)
+
+        elif option == 'list contacts':
+            for contact, info in sorted(contacts.items()):
+                print(
+                    f"Name: {contact}, Address: {info[0]}, Phone Number: {info[1]}, Email: {info[2]}")
+                print()
         else:
-            print("That contact exists.")
-
-    elif option.lower() == 'update contact':
-        contact_to_update = input('Which contact to update? ')
-        update_contact(contact_to_update)
-
-    elif option.lower() == 'delete contact':
-        contact_to_delete = input('Which contact to delete? ')
-        delete_contact(contact_to_delete)
-
-    elif option.lower() == 'list contacts':
-        for contact, info in sorted(contacts.items()):
-            print(
-                f"Name: {contact}, Address: {info[0]}, Phone Number: {info[1]}, Email: {info[2]}")
-            print()
+            print("No such option")
 
 
-def repeat():
-    main()
-    while input('Will you use the contact book again (Y/N) ? ').upper() == 'Y':
-        main()
-
-
-repeat()
+main()
