@@ -1,24 +1,8 @@
-from datetime import date
-import time
-import requests
 from plyer import notification
 
-covid_data = None
-
-try:
-    covid_data = requests.get(
-        "https://corona-rest-api.herokuapp.com/Api/bulgaria/")
-except:
-    print('Please, check your internet connection!')
-
-print(covid_data)
-
-if not covid_data == None:
-    data = covid_data.json()['Success']
-
-print(data)
-#     while True:
-
-#         notification.notify(
-#             title=f'COVID-19 STATS ON {date.today()}',
-#             message=f"Total cases: {data['cases']} Today cases: {data['todayCases']}",)
+notification.notify(
+    title='Please Drink Water',
+    message='An adequate daily fluid intake is: About 15.5 cups (3.7 liters) of fluids a day for men. About 11.5 cups (2.7 liters) of fluids a day for women.',
+    app_icon=r'D:\Archive of GitHub Not Connected\Beginner-Projects\icon.ico',
+    timeout=10
+)
