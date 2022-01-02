@@ -75,7 +75,7 @@ def play():
 
 def main():
     play()
-    while input('Wanna play again (Y/N) ? ').upper() == 'Y':
+    while input('Wanna play again (Y/N) ?').upper() == 'Y':
         play()
 
 
